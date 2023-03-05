@@ -1,0 +1,70 @@
+html {
+    --speed: 3s;
+    --bird-size: 50px;
+    --frame-size: 500px;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .game {
+    position: relative;
+    width: calc((var(--frame-size) * 3) / 5);
+    height: var(--frame-size);
+    background-image: url(assets/bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 5px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .bird {
+    position: absolute;
+    top: 50%;
+    width: var(--bird-size);
+    transition: top 100ms linear;
+  }
+  
+  .pipe {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: calc(var(--frame-size) / 10);
+    height: 40%;
+    background-image: url(assets/pipe.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+  }
+  
+  .pipe:nth-child(2) {
+    height: 35%;
+    top: calc(40% + 25%);
+    transform: rotate(360deg);
+  }
+  
+  .obstacles {
+    animation: move var(--speed) linear infinite;
+  }
+  
+  .score {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 2;
+  }
+  
+  @keyframes move {
+    0% {
+      left: 100%;
+    }
+    100% {
+      left: -50px;
+    }
+  }
